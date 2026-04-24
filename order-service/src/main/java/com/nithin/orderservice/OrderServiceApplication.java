@@ -1,6 +1,3 @@
-
-
-
 package com.nithin.orderservice;
 
 import org.springframework.boot.SpringApplication;
