@@ -2,6 +2,20 @@
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 CREATE EXTENSION IF NOT EXISTS "pg_stat_statements";
 
+-- ✅ CREATE TABLE FIRST (THIS IS MISSING)
+CREATE TABLE IF NOT EXISTS products (
+    id UUID PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    sku VARCHAR(100) UNIQUE NOT NULL,
+    description TEXT,
+    category VARCHAR(100),
+    price DECIMAL(10,2) NOT NULL,
+    stock_quantity INT DEFAULT 0,
+    reserved_quantity INT DEFAULT 0,
+    created_at TIMESTAMP DEFAULT NOW(),
+    updated_at TIMESTAMP DEFAULT NOW()
+);
+
 -- Seed products for inventory-service
 INSERT INTO products (id, name, sku, description, category, price, stock_quantity, reserved_quantity, created_at, updated_at)
 VALUES
